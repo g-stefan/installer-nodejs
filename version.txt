@@ -1,0 +1,1 @@
+node-v12.18.3-win-x64.zip,https://nodejs.org/en/download/
