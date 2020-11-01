@@ -13,7 +13,7 @@
 Name "NodeJS"
 
 ; Version
-!define NodeJSVersion "12.18.3"
+!define NodeJSVersion "$%PRODUCT_VERSION%"
 
 ; The file to write
 OutFile "installer\nodejs-${NodeJSVersion}-installer.exe"

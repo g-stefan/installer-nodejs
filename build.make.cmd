@@ -5,14 +5,16 @@ rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
 echo -^> make nodejs
 
+call build.config.cmd
+
 if exist build\ rmdir /Q /S build
 if exist release\ rmdir /Q /S release
 
 mkdir build
 mkdir release
 
-7z x "vendor/node-v12.18.3-win-x64.zip" -aoa -obuild
-move /Y "build\node-v12.18.3-win-x64" "release\nodejs"
+7z x "vendor/node-v%PRODUCT_VERSION%-win-x64.zip" -aoa -obuild
+move /Y "build\node-v%PRODUCT_VERSION%-win-x64" "release\nodejs"
 
 pushd release\nodejs
 set PATH=%CD%;%PATH%
