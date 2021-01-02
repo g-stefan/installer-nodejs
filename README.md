@@ -8,3 +8,10 @@ This is a custom installer that contains:
 * [uglify-js](https://www.npmjs.com/package/uglify-js)
 * [sass](https://www.npmjs.com/package/sass)
 * [css-purge](https://www.npmjs.com/package/css-purge)
+
+## License
+
+Copyright (c) Grigore Stefan
+
+Licensed under the [MIT](LICENSE) license.
+
