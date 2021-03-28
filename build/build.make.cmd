@@ -3,26 +3,26 @@ rem Public domain
 rem http://unlicense.org/
 rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
-call build.config.cmd
+call build\build.config.cmd
 
 echo -^> make %PRODUCT_NAME%
 
-if exist build\ rmdir /Q /S build
-if exist release\ rmdir /Q /S release
+if exist temp\ rmdir /Q /S temp
+if exist output\ rmdir /Q /S output
 
-mkdir build
-mkdir release
+mkdir temp
+mkdir output
 
-7z x "vendor/node-v%PRODUCT_VERSION%-win-x64.zip" -aoa -obuild
-move /Y "build\node-v%PRODUCT_VERSION%-win-x64" "release\nodejs"
+7z x "vendor/node-v%PRODUCT_VERSION%-win-x64.zip" -aoa -otemp
+move /Y "temp\node-v%PRODUCT_VERSION%-win-x64" "output\nodejs"
 
-pushd release\nodejs
+pushd output\nodejs
 set PATH=%CD%;%PATH%
 popd
 
-mkdir release\modules
+mkdir output\modules
 
-pushd release\modules
+pushd output\modules
 
 cmd.exe /C npm.cmd config --global set prefix "%CD%"
 cmd.exe /C npm.cmd install -g acorn
@@ -33,5 +33,5 @@ cmd.exe /C npm.cmd install -g css-purge
 
 popd
 
-rmdir /Q /S release\nodejs\etc
-rmdir /Q /S build
+rmdir /Q /S output\nodejs\etc
+rmdir /Q /S temp
