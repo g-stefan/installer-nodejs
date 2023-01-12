@@ -1,0 +1,18 @@
+{
+	"solution": {
+		"name" : "installer-nodejs",
+		"type" : "xyo-cpp",
+		"projects": [
+			{
+				"name" : "installer-nodejs",
+				"SPDX-License-Identifier": "MIT",
+				"version" : "18.13.0",
+				"noVersion" : true
+			}
+		],
+		"hasGithub" : true,
+		"sourceLinks" : {
+			"node-v18.13.0-win-x64.zip" : "https://nodejs.org/en/download/"
+		}
+	}
+}
