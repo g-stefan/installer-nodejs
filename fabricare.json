@@ -10,7 +10,6 @@
 				"noVersion" : true
 			}
 		],
-		"hasGithub" : true,
 		"sourceLinks" : {
 			"node-v18.13.0-win-x64.zip" : "https://nodejs.org/en/download/"
 		}
