@@ -6,12 +6,12 @@
 			{
 				"name" : "installer-nodejs",
 				"SPDX-License-Identifier": "MIT",
-				"version" : "22.9.0",
+				"version" : "24.10.0",
 				"noVersion" : true
 			}
 		],
 		"sourceLinks" : {
-			"node-v22.9.0-win-x64.zip" : "https://nodejs.org/en/download/"
+			"node-v24.10.0-win-x64.zip" : "https://nodejs.org/en/download/"
 		}
 	}
 }
