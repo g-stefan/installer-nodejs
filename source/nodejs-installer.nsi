@@ -17,18 +17,18 @@ Name "NodeJS"
 !define NodeJSVersion "$%PRODUCT_VERSION%"
 
 ; The file to write
-OutFile "release\nodejs-${NodeJSVersion}-installer.exe"
+OutFile "release\xyo-nodejs-${NodeJSVersion}-installer.exe"
 
 Unicode True
 RequestExecutionLevel admin
 BrandingText "Grigore Stefan [ github.com/g-stefan ]"
 
 ; The default installation directory
-InstallDir "$PROGRAMFILES64\NodeJS"
+InstallDir "$PROGRAMFILES64\XYO\NodeJS"
 
 ; Registry key to check for directory (so if you install again, it will 
 ; overwrite the old one automatically)
-InstallDirRegKey HKLM "Software\NodeJS" "InstallPath"
+InstallDirRegKey HKLM "Software\XYO\NodeJS" "InstallPath"
 
 ;--------------------------------
 ;Interface Settings
@@ -112,16 +112,16 @@ Section "NodeJS (required)" MainSection
 
 	; Set output path to the installation directory.
 	SetOutPath $INSTDIR
-	WriteRegStr HKLM "Software\NodeJS" "InstallPath" "$INSTDIR"
+	WriteRegStr HKLM "Software\XYO\NodeJS" "InstallPath" "$INSTDIR"
 
 	; Write the uninstall keys for Windows
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "DisplayName" "NodeJS"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "Publisher" "Grigore Stefan [ github.com/g-stefan ]"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "DisplayVersion" "${NodeJSVersion}"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "DisplayIcon" '"$INSTDIR\node.exe"'
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "NoModify" 1
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "NoRepair" 1
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "DisplayName" "XYO NodeJS"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "Publisher" "Grigore Stefan [ github.com/g-stefan ]"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "DisplayVersion" "${NodeJSVersion}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "DisplayIcon" '"$INSTDIR\node.exe"'
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "NoModify" 1
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "NoRepair" 1
 
 	; Program files
 	File /r "output\nodejs\*"
@@ -143,7 +143,7 @@ Section "NodeJS (required)" MainSection
 	; Computing EstimatedSize
 	Call GetInstalledSize
 	Pop $0
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS" "EstimatedSize" "$0"
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS" "EstimatedSize" "$0"
 
 
 	; Set to HKLM
@@ -223,10 +223,10 @@ Section "Uninstall"
 	!macroend
  
 	ClearErrors
-	ReadRegStr $INSTDIR HKLM "Software\NodeJS" "InstallPath"
+	ReadRegStr $INSTDIR HKLM "Software\XYO\NodeJS" "InstallPath"
 	IfErrors +2
 	StrCmp $INSTDIR "" 0 +2
-		StrCpy $INSTDIR "$PROGRAMFILES64\NodeJS"
+		StrCpy $INSTDIR "$PROGRAMFILES64\XYO\NodeJS"
  
 	# Check that the uninstall isn't dangerous.
 	!insertmacro BadPathsCheck
@@ -250,8 +250,8 @@ Section "Uninstall"
 	SetOutPath $TEMP
 
 	; Remove registry keys
-	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\NodeJS"
-	DeleteRegKey HKLM "Software\NodeJS"
+	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-NodeJS"
+	DeleteRegKey HKLM "Software\XYO\NodeJS"
 
 	; Remove files and uninstaller
 	RMDir /r "$INSTDIR"

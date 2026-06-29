@@ -13,10 +13,10 @@ Shell.setenv("PRODUCT_VERSION", Project.version);
 Shell.setenv("PRODUCT_BASE", "nodejs");
 
 exitIf(Shell.system("makensis.exe /NOCD \"source\\nodejs-installer.nsi\""));
-exitIf(Shell.system("grigore-stefan.sign \"NodeJS\" \"release\\nodejs-" + Project.version + "-installer.exe\""));
+exitIf(Shell.system("grigore-stefan.sign \"NodeJS\" \"release\\xyo-nodejs-" + Project.version + "-installer.exe\""));
 
-var fileName = "nodejs-" + Project.version + "-installer.exe";
-var jsonName = "nodejs-" + Project.version + "-installer.json";
+var fileName = "xyo-nodejs-" + Project.version + "-installer.exe";
+var jsonName = "xyo-nodejs-" + Project.version + "-installer.json";
 
 var json = {};
 json[fileName] = SHA512.fileHash("release/" + fileName);
